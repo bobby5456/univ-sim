@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <link rel="stylesheet" href="style.css">
+  <title>Universe Simulation</title>
+
+  <!-- (empty import map included so the page can be extended to esm.sh libs if needed) -->
+  <script type="importmap">
+  {
+  }
+  </script>
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <!-- Settings button overlay -->
+  <button id="settingsBtn" aria-label="Open settings">⚙︎</button>
+
+  <!-- Settings modal -->
+  <div id="settings" aria-hidden="true">
+    <div class="sheet">
+      <h3>Simulation Settings</h3>
+
+      <label>
+        Particles
+        <input id="particlesInput" type="range" min="50" max="1200" step="10">
+        <div class="val" id="particlesVal"></div>
+      </label>
+
+      <label>
+        Big Bang Velocity
+        <input id="velocityInput" type="range" min="50" max="2000" step="10">
+        <div class="val" id="velocityVal"></div>
+      </label>
+
+      <label>
+        Simulation Speed
+        <input id="simSpeedInput" type="range" min="0.1" max="4" step="0.1" value="1">
+        <div class="val" id="simSpeedVal">1.0x</div>
+      </label>
+
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px;">
+        <label style="display:flex;align-items:center;gap:10px;margin:0;">
+          <input id="fullscreenToggle" type="checkbox" style="width:18px;height:18px;">
+          <span style="font-size:13px;color:#ddd;">Fullscreen</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;margin:0;">
+          <input id="pauseToggle" type="checkbox" style="width:18px;height:18px;">
+          <span style="font-size:13px;color:#ddd;">Pause</span>
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="apply">Apply & Restart</button>
+        <button id="applyNoRestart" class="muted">Apply (no restart)</button>
+        <button id="cancel" class="muted">Cancel</button>
+      </div>
+
+      <div class="row top-gap">
+        <button id="restartInside">Restart (current)</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
