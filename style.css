@@ -1,0 +1,122 @@
+/* Full-viewport canvas, no chrome text to keep mobile iframe clean */
+html,body{
+  height:100%;
+  margin:0;
+  background:#0b0b0c;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  touch-action:none;
+}
+canvas{
+  display:block;
+  width:100vw;
+  height:100vh;
+}
+
+/* Settings button styling: unobtrusive, touch-friendly */
+#settingsBtn{
+  position:fixed;
+  right:12px;
+  top:12px;
+  z-index:30;
+  padding:10px 12px;
+  font-size:16px;
+  border-radius:10px;
+  border:0;
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  min-height:44px;
+  min-width:44px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+#settingsBtn:active{ transform: translateY(1px); }
+
+/* Settings modal (bottom sheet style) */
+#settings{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:40;
+  pointer-events:none;
+}
+#settings[aria-hidden="false"]{
+  pointer-events:auto;
+}
+#settings .sheet{
+  width:94%;
+  max-width:420px;
+  margin:18px;
+  background:rgba(12,12,13,0.96);
+  color:#fff;
+  border-radius:14px;
+  padding:14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  transform: translateY(10px);
+  transition: transform 160ms ease, opacity 160ms ease;
+  opacity:1;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+#settings[aria-hidden="true"] .sheet{
+  transform: translateY(30px);
+  opacity:0;
+}
+
+/* Inputs */
+label{
+  display:block;
+  margin:10px 0;
+  font-size:13px;
+  color:#ddd;
+}
+input[type="range"]{
+  width:100%;
+  margin-top:8px;
+  accent-color: #ff8a3c;
+}
+.val{
+  margin-top:6px;
+  font-size:13px;
+  color:#aaa;
+  text-align:right;
+}
+
+/* Buttons row */
+.row{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+button{
+  cursor:pointer;
+  padding:10px 12px;
+  border-radius:10px;
+  border:0;
+  background:#ff8a3c;
+  color:#111;
+  font-weight:600;
+  flex:1;
+  min-height:44px;
+}
+button.muted{
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+}
+.top-gap{ margin-top:18px; }
+
+/* small adjustments for the internal restart button */
+#restartInside{
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+  border-radius:10px;
+  padding:10px;
+  font-weight:600;
+}
+
